@@ -8,7 +8,7 @@ node {
     }
 
   stage('Build Image') {
-       app = docker.build("prajvalgh/javaimageone")
+       app = docker.build("akshaya23/assignment2")
     }
 
   stage('Push Image') {
@@ -20,7 +20,7 @@ node {
 
 	stage('Deploy')	{
 		
-			def dockerImage = docker.image('prajvalgh/javaimageone:'+"${env.BUILD_NUMBER}")
+			def dockerImage = docker.image('akshaya23/assignment2:'+"${env.BUILD_NUMBER}")
 			sh 'docker rm -f app'
 			dockerImage.run('-d -p 8081:8080 --name app')	
 
